@@ -1,6 +1,8 @@
 restart
 ---Loading the main algorithm.
 t1=cpuTime();
+loadPackage "RationalPoints2"
+needsPackage "RationalPoints2"
 load "InvariantSet.m2"
 load "InRadical.m2"
 load "Compose.m2"
@@ -30,7 +32,13 @@ while i<length mapping() do (
 	i=i+1;
 );	
 maps = join(maps, {(guard())_0*x_(n+1)});
-I= computeInvariantSet(PI(), maps, n+1);
+PolIn={};
+i=0;
+while i < length PI() do(
+PolIn=join(PolIn,{x_(n+1)*(PI())_i});
+i=i+1;
+);
+I= computeInvariantSet(PolIn, maps, n+1);
  A = {x_1=>(initial())_0};
 	    t =  2;
 	    while t<n+1 do(
@@ -39,8 +47,8 @@ I= computeInvariantSet(PI(), maps, n+1);
 		);
 A = join(A,{x_(n+1)=>1});
 I = sub(ideal I, A);
-<< I<< endl;
+---<< I<< endl;
 );
 computeLoops= method();
-computeLoops(String) := (u) ->(elapsedTime computeInvariantsN(u,d);)
+computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);)
 end --
