@@ -4,6 +4,7 @@ t1=cpuTime();
 loadPackage "RationalPoints2"
 needsPackage "RationalPoints2"
 load "InvariantSet.m2"
+load "python.m2"
 load "InRadical.m2"
 load "InIdeal.m2"
 load "Compose.m2"
@@ -70,5 +71,5 @@ i=i+1;
 << "The number of non-zero polynomials in the output is "<< j<< endl;
 );
 computeLoops= method();
-computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);)
+computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u); elapsedTime python(M,I);)
 end --
