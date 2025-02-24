@@ -27,7 +27,7 @@ The output consists of two elements:
 2. A non-zero solution of the system of polynomials printed above. 
 
 ```
-computeGeneralDI("<loops/loop-name/loop-structure>.m2")
+computeLoopsDI("<loops/loop-name/loop-structure>.m2")
 ```
 
 The output consists of five elements:
