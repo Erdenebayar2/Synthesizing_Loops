@@ -16,21 +16,7 @@ while i<n do(
     Int = concatenate(Int,",Int('",L, "')");
 );
 Var = concatenate(Var,Int);
----NoZe = concatenate(",y_1","**2");
----i=1;
----while i<n do(
----i=i+1;
----L = toString y_i;
----NoZe = concatenate(NoZe, "+", L, "**2");
----);
 NoZe = ",y_1!=0";
----i = 1;
----while i<n do(
-   ---i=i+1;
-   ---L = toString y_i;
-   ---NoZe = concatenate(NoZe,",", L, "!=0");
----);
----NoZe= concatenate(NoZe, "!=0");
 I = trim I;
 I = ideal (0,I);
 K = first entries gens I;
