@@ -77,7 +77,7 @@ while i<n do(
     L = toString x_i;
     Var = concatenate(Var,",",L);
 );
-Var = concatenate(Var, "}")
+Var = concatenate(Var, "}");
 << "The number of non-zero polynomials in the output is "<< j<< endl;
 <<"The following loop satisfies given polynomial invariants "<<endl;
 <<Var <<"<-"<<mapsP<<" when"<<endl;
