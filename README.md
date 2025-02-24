@@ -2,12 +2,12 @@
 
 *Prototype implementation of an new algorithm for generating polynomial loops that satisfy given polynomial invariants, with inequations as guards and fixed intial values.*
 
-This repository contains the directory **"software"**, that includes an implementation in [Macaulay2](https://macaulay2.com/) of the algorithm (aka Algorithm 2) described in the SOAP'25 submission: 
+This repository contains the directory **"software"**, that includes an implementation in [Macaulay2](https://macaulay2.com/) of the algorithm (Algorithm 2) described in the SOAP'25 submission: 
 
 * **Polynomial Invariants to Loops** <br>*E. Bayarmagnai, F. Mohammadi, R. Prébet*
 
 ---
-The directory **"software"** contains the on-going implementation of the algorithm. 
+The directory **"software"** contains the ongoing implementation of the algorithm. 
 In this directory, you will find the source code together, along with a directory "loops" containing loop examples (e.g. "ex2.m2") that the user can run the software on.
 
 A short way to run the software is by the command:
