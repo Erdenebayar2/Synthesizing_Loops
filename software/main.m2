@@ -41,6 +41,7 @@ maps = join(maps, {x_(LM +i+1)});
 i=i+1;
 );
 );
+mapsP = maps;
 maps = join(maps, {(guard())_0*x_(n+1)});
 PolIn={};
 i=0;
@@ -56,6 +57,7 @@ I= computeInvariantSet(PolIn, maps, n+1);
 		t=t+1; 
 		);
 A = join(A,{x_(n+1)=>1});
+J = I;
 I = sub(ideal I, A);
 ---<< Polynomials whose vanishing locus << endl;
 i = 0;
@@ -68,13 +70,34 @@ j=j+1;
 );
 i=i+1;
 );
+Var = "{x_1";
+i = 1;
+while i<n do(
+    i=i+1;
+    L = toString x_i;
+    Var = concatenate(Var,",",L);
+);
+Var = concatenate(Var, "}")
 << "The number of non-zero polynomials in the output is "<< j<< endl;
-R3 = QQ[y_1..y_M];
-I = sub(I,R3);
-<< "The dimension of the variety is" <<dim I<< endl;
-<<"The number of irreducible components is"<< length(minimalPrimes I)<<endl;
+<<"The following loop satisfies given polynomial invariants "<<endl;
+<<Var <<"<-"<<mapsP<<" when"<<endl;
 );
 computeLoops= method();
 computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(M,I);)
+computeLoopsDI = method();
+computeLoopsDI(String) := (u) ->(elapsedTime computeLoopsN(u);
+elapsedTime python(M,I);
+R3 = QQ[y_1..y_M];
+I = sub(I,R3);
+<< "The dimension of the variety is " <<dim I<< endl;
+<<"The number of the irreducible components of the variety is "<< length(minimalPrimes I)<<endl;
+K = minimalPrimes I;
+i =0;
+while i < length K do(
+<< K_i<<endl;
+i=i+1;
+);
+)
+
 ---
 end --
