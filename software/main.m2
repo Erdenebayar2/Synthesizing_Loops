@@ -69,7 +69,12 @@ j=j+1;
 i=i+1;
 );
 << "The number of non-zero polynomials in the output is "<< j<< endl;
+R3 = QQ[y_1..y_M];
+I = sub(I,R3);
+<< "The dimension of the variety is" <<dim I<< endl;
+<<"The number of irreducible components is"<< length(minimalPrimes I)<<endl;
 );
 computeLoops= method();
-computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u); elapsedTime python(M,I);)
+computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(M,I);)
+---
 end --
