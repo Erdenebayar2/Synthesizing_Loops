@@ -4,7 +4,7 @@
 
 This repository contains the directory **"software"**, that includes an implementation in [Macaulay2](https://macaulay2.com/) of the algorithm (Algorithm 2) described in the SOAP'25 submission: 
 
-* **Polynomial Invariants to Loops** <br>*E. Bayarmagnai, F. Mohammadi, R. Prébet*
+* **Beyond Affine Loops: A Geometric Approach to Program Synthesis** <br>*E. Bayarmagnai, F. Mohammadi, R. Prébet*
 
 ---
 The directory **"software"** contains the ongoing implementation of the algorithm. 

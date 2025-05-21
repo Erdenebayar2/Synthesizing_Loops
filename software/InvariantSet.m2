@@ -14,3 +14,4 @@ return X;
 );
 
 ---Computing Invariant sets
+---while radicalContainment(Xt_0, ideal(X)) == false do(
