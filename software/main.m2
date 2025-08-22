@@ -5,6 +5,7 @@ loadPackage "RationalPoints2"
 needsPackage "RationalPoints2"
 load "InvariantSet.m2"
 load "python.m2"
+load "constructmaps.m2"
 load "InRadical.m2"
 load "InIdeal.m2"
 load "Compose.m2"
@@ -12,11 +13,12 @@ computeLoopsN = method();
 computeLoopsN(String) := (u)->(
 ---Loading an example 
 load u;   
-M =0;
-R= QQ[x_1..x_(n+1),y_1..y_(M+20),e];
+R= QQ[x_1..x_(n+1),y_1..y_(100),e];
+if branch_num==1 then(
 i = 0;
+l =1;
 while i<length mapping() do (
-	M = M+length (mapping())_i;
+	l = l+length (mapping())_i;
 	i =i+1
 );
 maps={};
@@ -49,7 +51,7 @@ while i < length PI() do(
 PolIn=join(PolIn,{x_(n+1)*(PI())_i});
 i=i+1;
 );
-I= computeInvariantSet(PolIn, maps, n+1);
+I= computeInvariantSet(PolIn, maps, n+1,branch_num);
  A = {x_1=>(initial())_0};
 	    t =  2;
 	    while t<n+1 do(
@@ -59,7 +61,6 @@ I= computeInvariantSet(PolIn, maps, n+1);
 A = join(A,{x_(n+1)=>1});
 J = I;
 I = sub(ideal I, A);
----<< Polynomials whose vanishing locus << endl;
 i = 0;
 j=0;
 ZP = x_1-x_1;
@@ -82,8 +83,84 @@ Var = concatenate(Var, "}");
 <<"The following loop satisfies given polynomial invariants "<<endl;
 <<Var <<"<-"<<mapsP<<" when"<<endl;
 );
+
+
+if branch_num >1 then (
+G = (guard())_0;
+Mapping = mapping();
+print(Mapping);
+Maps =constructmaps(Mapping,n);
+print(l);
+print(Maps);
+i = 0;
+while i < length(Maps) do (
+    Fb_i = join(Maps_i, {x_(n+1)*G});
+    i = i+1
+    );
+maps = {Fb_0};
+i =1;
+while i<length(Maps) do (
+maps = join(maps, {Fb_i});
+i = i+1;
+);
+---Computing X_i
+N=0;
+g = PI();
+X = {};
+i =0;
+while i< length(g) do(
+	X = append(X, x_(n+1)*g_i);
+	i = i+1;
+);
+print(X);
+--- Computing invariant set
+Xt = Compose(X,maps,n+1,branch_num);
+while InRadical(Xt, X) == false do(
+X = join(X, Xt);
+Xt= Compose(Xt, maps,n+1,branch_num);
+N= N+1;
+print N;
+);
+T = sub(ideal(X), {x_(n+1)=>1});
+TT=T;
+A = {x_1=>(initial())_0};
+	    t =  2;
+	    while t<n+1 do(
+		A =join(A,{x_t=>(initial())_(t-1)});
+		t=t+1; 
+		);
+I = sub(T,A);
+i = 0;
+j=0;
+ZP = x_1-x_1;
+while i< numgens I do(
+if ((gens T)_i)_0 !=ZP then(
+<< (gens T)_i <<endl;
+j=j+1;
+);
+i=i+1;
+);
+Var = "{x_1";
+i = 1;
+while i<n do(
+    i=i+1;
+    L = toString x_i;
+    Var = concatenate(Var,",",L);
+);
+Var = concatenate(Var, "}");
+<< "The number of non-zero polynomials in the output is "<< j<< endl;
+<<"The following loop satisfies given polynomial invariants "<<endl;
+<<Var <<"<-"<<Maps<<" when"<<endl;
+);
+);
+
+
+
+
+
+---<< Polynomials whose vanishing locus << endl;
 computeLoops= method();
-computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(M,I);)
+computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(l-1,n,I);)
 computeLoopsDI = method();
 computeLoopsDI(String) := (u) ->(elapsedTime computeLoopsN(u);
 elapsedTime python(M,I);

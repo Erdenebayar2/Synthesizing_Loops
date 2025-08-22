@@ -1,18 +1,30 @@
 python = method()
-python(ZZ, Ideal) := (n,I)->(
-R1 = QQ[y_1..y_n];
+python(ZZ,ZZ, Ideal) := (l,n,I)->(
+R1 = QQ[y_1..y_l,a_1..a_n];
 Var = "y_1";
 i = 1;
-while i<n do(
+while i<l do(
     i=i+1;
     L = toString y_i;
     Var = concatenate(Var,",",L);
 );
-Int ="=Int('y_1')";
-i = 1;
+i = 0;
 while i<n do(
     i=i+1;
+    L = toString a_i;
+    Var = concatenate(Var,",",L);
+);
+Int ="=Int('y_1')";
+i = 1;
+while i<l do(
+    i=i+1;
     L = toString y_i;
+    Int = concatenate(Int,",Int('",L, "')");
+);
+i = 0;
+while i<n do(
+    i=i+1;
+    L = toString a_i;
     Int = concatenate(Int,",Int('",L, "')");
 );
 Var = concatenate(Var,Int);
