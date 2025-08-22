@@ -1,13 +1,14 @@
 restart
 ---Loading the main algorithm.
 t1=cpuTime();
-loadPackage "RationalPoints2"
-needsPackage "RationalPoints2"
+---loadPackage "RationalPoints2"
+---needsPackage "RationalPoints2"
 load "InvariantSet.m2"
 load "python.m2"
 load "constructmaps.m2"
 load "InRadical.m2"
 load "InIdeal.m2"
+load "computeLoopsGeneralN.m2"
 load "Compose.m2"
 computeLoopsN = method();
 computeLoopsN(String) := (u)->(
@@ -90,7 +91,7 @@ G = (guard())_0;
 Mapping = mapping();
 print(Mapping);
 Maps =constructmaps(Mapping,n);
-print(l);
+---print(l);
 print(Maps);
 i = 0;
 while i < length(Maps) do (
@@ -161,6 +162,8 @@ Var = concatenate(Var, "}");
 ---<< Polynomials whose vanishing locus << endl;
 computeLoops= method();
 computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(l-1,n,I);)
+computeLoopsGeneral =method();
+computeLoopsGeneral(String):=(u) ->(elapsedTime computeLoopsGeneralN(u);)
 computeLoopsDI = method();
 computeLoopsDI(String) := (u) ->(elapsedTime computeLoopsN(u);
 elapsedTime python(M,I);
