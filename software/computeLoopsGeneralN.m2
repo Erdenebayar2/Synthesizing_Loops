@@ -57,7 +57,7 @@ computeLoopsGeneralN(String) :=(u)-> (
 	);
 	Var = concatenate(Var, "}");
 	--- solving the linear equations coming from the coefficients
-	Asol = solve(Mhom,b);
+	Asol = solve(Mhom,-b);
 	Vspace = generators(ker Mhom);
 	--- y variables
 	Yvar ={};
