@@ -8,7 +8,7 @@ load "python.m2"
 load "constructmaps.m2"
 load "InRadical.m2"
 load "InIdeal.m2"
-load "computeLoopsGeneralN.m2"
+load "computeLoopsUniversalN.m2"
 load "Compose.m2"
 computeLoopsN = method();
 computeLoopsN(String) := (u)->(
@@ -162,8 +162,8 @@ Var = concatenate(Var, "}");
 ---<< Polynomials whose vanishing locus << endl;
 computeLoops= method();
 computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(l-1,n,I);)
-computeLoopsGeneral =method();
-computeLoopsGeneral(String):=(u) ->(elapsedTime computeLoopsGeneralN(u);)
+computeLoopsUniversal =method();
+computeLoopsUniversal(String):=(u) ->(elapsedTime computeLoopsUniversalN(u);)
 computeLoopsDI = method();
 computeLoopsDI(String) := (u) ->(elapsedTime computeLoopsN(u);
 elapsedTime python(M,I);

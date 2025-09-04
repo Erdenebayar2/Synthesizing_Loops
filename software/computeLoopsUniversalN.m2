@@ -1,5 +1,5 @@
-computeLoopsGeneralN = method()
-computeLoopsGeneralN(String) :=(u)-> (
+computeLoopsUniversalN = method()
+computeLoopsUniversalN(String) :=(u)-> (
 ---Loading an example
 	load u;
 	R= QQ[x_1..x_(n+1),y_1..y_(100)];
