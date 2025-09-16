@@ -4,6 +4,7 @@ t1=cpuTime();
 ---loadPackage "RationalPoints2"
 ---needsPackage "RationalPoints2"
 load "InvariantSet.m2"
+load "rununiversal.m2"
 load "python.m2"
 load "constructmaps.m2"
 load "InRadical.m2"
@@ -14,7 +15,7 @@ computeLoopsN = method();
 computeLoopsN(String) := (u)->(
 ---Loading an example 
 load u;   
-R= QQ[x_1..x_(n+1),y_1..y_(100),e];
+R= QQ[x_1..x_(n+1),y_1..y_(100),a_1..a_n,e];
 if branch_num==1 then(
 i = 0;
 l =1;
@@ -133,6 +134,7 @@ A = {x_1=>(initial())_0};
 I = sub(T,A);
 i = 0;
 j=0;
+NY = l;
 ZP = x_1-x_1;
 while i< numgens I do(
 if ((gens T)_i)_0 !=ZP then(
@@ -161,15 +163,27 @@ Var = concatenate(Var, "}");
 
 ---<< Polynomials whose vanishing locus << endl;
 computeLoops= method();
-computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);elapsedTime python(l-1,n,I);)
+computeLoops(String) := (u) ->(elapsedTime computeLoopsN(u);NoZe = ",y_1!=0";elapsedTime python(l-1,n,I);)
 computeLoopsUniversal =method();
-computeLoopsUniversal(String):=(u) ->(elapsedTime computeLoopsUniversalN(u);)
+computeLoopsUniversal(String):=(u) ->(elapsedTime computeLoopsUniversalN(u); NoZe = ",y_1!=100";if deg>1 then( elapsedTime python(l,n,I);))
 computeLoopsDI = method();
 computeLoopsDI(String) := (u) ->(elapsedTime computeLoopsN(u);
-elapsedTime python(M,I);
-R3 = QQ[y_1..y_M];
+R3 = QQ[y_1..y_(NY-1)];
 I = sub(I,R3);
 << "The dimension of the variety is " <<dim I<< endl;
+<<"The number of the irreducible components of the variety is "<< length(minimalPrimes I)<<endl;
+K = minimalPrimes I;
+i =0;
+while i < length K do(
+<< K_i<<endl;
+i=i+1;
+);
+);
+computeLoopsUniversalDI = method();
+computeLoopsUniversalDI(String) := (u) ->(elapsedTime computeLoopsUniversalN(u);
+R3 = QQ[y_1..y_(NY-1)];
+I = sub(I,R3);
+<< "The dimension of the variety is " <<dim trim(I)<< endl;
 <<"The number of the irreducible components of the variety is "<< length(minimalPrimes I)<<endl;
 K = minimalPrimes I;
 i =0;

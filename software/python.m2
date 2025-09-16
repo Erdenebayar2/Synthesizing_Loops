@@ -14,21 +14,20 @@ while i<n do(
     L = toString a_i;
     Var = concatenate(Var,",",L);
 );
-Int ="=Int('y_1')";
+Int ="=Real('y_1')";
 i = 1;
 while i<l do(
     i=i+1;
     L = toString y_i;
-    Int = concatenate(Int,",Int('",L, "')");
+    Int = concatenate(Int,",Real('",L, "')");
 );
 i = 0;
 while i<n do(
     i=i+1;
     L = toString a_i;
-    Int = concatenate(Int,",Int('",L, "')");
+    Int = concatenate(Int,",Real('",L, "')");
 );
 Var = concatenate(Var,Int);
-NoZe = ",y_1!=0";
 I = trim I;
 I = ideal (0,I);
 K = first entries gens I;
