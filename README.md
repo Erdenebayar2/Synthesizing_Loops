@@ -37,3 +37,23 @@ The output consists of five elements:
 4. The number of the irreducible components of the variety
 5. Ideals defining the irreducible components of the variety
 
+
+```
+computeLoopsUniversal("<loops/loop-name/loop-structure>.m2")
+```
+
+The output consists of two elements:
+1. Polynomials such that every loop with the given structure that satisfies given universally inductive invariants is captured as one of the common solutions of the generated polynomials;
+2. A non-zero solution of the system of polynomials printed above. 
+
+
+```
+computeLoopsUniversalDI("<loops/loop-name/loop-structure>.m2")
+```
+
+The output consists of five elements:
+1. Polynomials such that every loop with the given structure that satisfies given universally inductive invariants is captured as one of the common solutions of the generated polynomials;
+2. A non-zero solution of the system of polynomials printed above.
+3. The dimension of the variety defined by the polynomials printed above.
+4. The number of the irreducible components of the variety
+5. Ideals defining the irreducible components of the variety
