@@ -70,7 +70,7 @@ computeLoopsUniversalN(String) :=(u)-> (
 		i = i+1;
 	);
 	Li = LinearEquations;
-	R1 = QQ[y_1..y_(100)][x_1..x_(n+1)];
+	R1 = QQ[y_1..y_(200)][x_1..x_(n+1)];
 	LinearEquations = sub(ideal(LinearEquations),R1);
 	coef = transpose(coefficients(gens LinearEquations))_1;
 	i=0;

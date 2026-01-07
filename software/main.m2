@@ -15,7 +15,7 @@ computeLoopsN = method();
 computeLoopsN(String) := (u)->(
 ---Loading an example 
 load u;   
-R= QQ[x_1..x_(n+1),y_1..y_(100),a_1..a_n,e];
+R= QQ[x_1..x_(n+1),y_1..y_(200),a_1..a_n,e];
 if branch_num==1 then(
 i = 0;
 l =1;

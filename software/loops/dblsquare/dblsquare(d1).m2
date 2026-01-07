@@ -1,0 +1,7 @@
+----number of program variables
+n =2
+branch_num =1
+mapping =() ->({1})
+guard = () ->({1})
+PI = ()->({x_1-2*x_2^2})
+initial= ()->( {1/8,-1/4})
